@@ -1,0 +1,13 @@
+# Synthetic resource. No working proxy or real credential.
+# subscription-userinfo: upload=0; download=2147483648; total=10737418240; expire=0
+proxies:
+  - name: US Demo
+    type: trojan
+    server: example.invalid
+    port: 443
+    password: synthetic-example-only
+  - name: JP Demo
+    type: vless
+    server: example.invalid
+    port: 8443
+    uuid: 00000000-0000-4000-8000-000000000000

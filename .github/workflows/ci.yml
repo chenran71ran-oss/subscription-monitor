@@ -1,0 +1,31 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:ui
+      - name: Validate Worker bundle without deploying
+        run: npx wrangler deploy --dry-run --config wrangler.example.toml --outdir .artifacts/worker-bundle
+      - name: Upload synthetic UI test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-ui-checks
+          path: .artifacts/
+          retention-days: 7

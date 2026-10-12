@@ -24,26 +24,40 @@ Cloudflare Workers + KV · 自托管 · 单文件部署 · 响应式界面
 
 ## 功能
 
-| 模块 | 已实现内容 |
-| --- | --- |
-| 订阅概览 | 已用、剩余、总量、到期、订阅状态、节点数量、检测时间 |
-| 今日用量 | 按 Asia/Shanghai 日界线，从额度快照计算差值；标记不完整统计 |
-| 多种来源 | HTTPS 链接拉取、UTF-8 YAML / JSON / 文本文件导入、外部推送 |
-| 多种格式 | 节点链接与 Base64、Clash YAML / JSON、sing-box JSON、部分文本配置 |
-| 流量兼容 | 响应头、正文元数据、流量备注、QX info、Shadowrocket STATUS |
-| 节点观察 | Cloudflare 到节点端点的 TCP 建连耗时、协议数量、名称推断地区 |
-| 交互界面 | 详细 / 紧凑 / 磁贴 / 表格四种布局，白天 / 系统 / 黑夜主题 |
-| 细节体验 | 液态按钮反馈、卡片拖动排序、同行折叠工具、底部导航、安全区适配 |
-| 中控与排查 | 中控大屏、采集记录、异常摘要、JSON 状态快照、版本记录 |
-| 自托管 | 单个 Worker + KV，Bearer 口令保护 API，可配置 Cron |
+<div align="center">
+<table align="center">
+<thead>
+<tr><th align="center">模块</th><th align="center">已实现内容</th></tr>
+</thead>
+<tbody>
+<tr><td align="center">订阅概览</td><td align="center">已用、剩余、总量、到期、订阅状态、节点数量、检测时间</td></tr>
+<tr><td align="center">今日用量</td><td align="center">按 Asia/Shanghai 日界线，从额度快照计算差值；标记不完整统计</td></tr>
+<tr><td align="center">多种来源</td><td align="center">HTTPS 链接拉取、UTF-8 YAML / JSON / 文本文件导入、外部推送</td></tr>
+<tr><td align="center">多种格式</td><td align="center">节点链接与 Base64、Clash YAML / JSON、sing-box JSON、部分文本配置</td></tr>
+<tr><td align="center">流量兼容</td><td align="center">响应头、正文元数据、流量备注、QX info、Shadowrocket STATUS</td></tr>
+<tr><td align="center">节点观察</td><td align="center">Cloudflare 到节点端点的 TCP 建连耗时、协议数量、名称推断地区</td></tr>
+<tr><td align="center">交互界面</td><td align="center">详细 / 紧凑 / 磁贴 / 表格四种布局，白天 / 系统 / 黑夜主题</td></tr>
+<tr><td align="center">细节体验</td><td align="center">液态按钮反馈、卡片拖动排序、同行折叠工具、底部导航、安全区适配</td></tr>
+<tr><td align="center">中控与排查</td><td align="center">中控大屏、采集记录、异常摘要、JSON 状态快照、版本记录</td></tr>
+<tr><td align="center">自托管</td><td align="center">单个 Worker + KV，Bearer 口令保护 API，可配置 Cron</td></tr>
+</tbody>
+</table>
+</div>
 
 ## 界面预览
 
 所有截图使用本仓库生成的模拟数据，不包含实际订阅链接或账号数据。
 
-| 黑夜模式 | 手机端 |
-| --- | --- |
-| ![黑夜模式](docs/assets/mobile-dark.png) | ![手机端](docs/assets/mobile.png) |
+<div align="center">
+<table align="center">
+<thead>
+<tr><th align="center">黑夜模式</th><th align="center">手机端</th></tr>
+</thead>
+<tbody>
+<tr><td align="center"><img src="docs/assets/mobile-dark.png" alt="黑夜模式"></td><td align="center"><img src="docs/assets/mobile.png" alt="手机端"></td></tr>
+</tbody>
+</table>
+</div>
 
 [查看四种布局](docs/screenshots.md)。首屏与卡片内容会根据屏幕宽度调整；手机端和桌面端不强行使用同一密度。
 
@@ -96,22 +110,29 @@ npx wrangler secret put ADMIN_TOKEN
 
 ## 文档导航
 
-| 文档 | 内容 |
-| --- | --- |
-| [部署与升级](docs/deployment.md) | 网页编辑器、Wrangler、KV、Secrets、Cron、旧版迁移 |
-| [使用指南](docs/user-guide.md) | 三个视图、四种布局、主题、文件、手动校准 |
-| [解析与流量](docs/parsing.md) | 输入格式、流量来源、优先级、未知值、样例 |
-| [节点与延迟](docs/latency.md) | TCP 测量含义、结果分类、资源预算 |
-| [API 参考](docs/api.md) | 鉴权、请求字段、状态字段、错误码 |
-| [推送接入](docs/push.md) | 受信任的本地采集、现代与旧版接口 |
-| [架构与数据](docs/architecture.md) | 构建链、请求链、KV 数据、并发边界 |
-| [问题排查](docs/troubleshooting.md) | 403、无额度、文件失败、检测缺失、旧快照 |
-| [开发指南](docs/development.md) | 源码目录、构建、离线测试、浏览器测试 |
-| [设计决策](docs/design-decisions.md) | 整理本项目需求演进与保留 / 删除的设计 |
-| [兼容迁移](docs/migration.md) | 从原单文件版升级，口令与 KV 保持一致 |
-| [路线图](docs/roadmap.md) | 当前已完成与尚未实现的候选事项 |
-| [开源基线](docs/open-source-baseline.md) | 参考项目、文档组织方法、发布检查 |
-| [版本记录](CHANGELOG.md) | v01 首次开源与 Demo 开发历史 |
+<div align="center">
+<table align="center">
+<thead>
+<tr><th align="center">文档</th><th align="center">内容</th></tr>
+</thead>
+<tbody>
+<tr><td align="center"><a href="docs/deployment.md">部署与升级</a></td><td align="center">网页编辑器、Wrangler、KV、Secrets、Cron、旧版迁移</td></tr>
+<tr><td align="center"><a href="docs/user-guide.md">使用指南</a></td><td align="center">三个视图、四种布局、主题、文件、手动校准</td></tr>
+<tr><td align="center"><a href="docs/parsing.md">解析与流量</a></td><td align="center">输入格式、流量来源、优先级、未知值、样例</td></tr>
+<tr><td align="center"><a href="docs/latency.md">节点与延迟</a></td><td align="center">TCP 测量含义、结果分类、资源预算</td></tr>
+<tr><td align="center"><a href="docs/api.md">API 参考</a></td><td align="center">鉴权、请求字段、状态字段、错误码</td></tr>
+<tr><td align="center"><a href="docs/push.md">推送接入</a></td><td align="center">受信任的本地采集、现代与旧版接口</td></tr>
+<tr><td align="center"><a href="docs/architecture.md">架构与数据</a></td><td align="center">构建链、请求链、KV 数据、并发边界</td></tr>
+<tr><td align="center"><a href="docs/troubleshooting.md">问题排查</a></td><td align="center">403、无额度、文件失败、检测缺失、旧快照</td></tr>
+<tr><td align="center"><a href="docs/development.md">开发指南</a></td><td align="center">源码目录、构建、离线测试、浏览器测试</td></tr>
+<tr><td align="center"><a href="docs/design-decisions.md">设计决策</a></td><td align="center">整理本项目需求演进与保留 / 删除的设计</td></tr>
+<tr><td align="center"><a href="docs/migration.md">兼容迁移</a></td><td align="center">从原单文件版升级，口令与 KV 保持一致</td></tr>
+<tr><td align="center"><a href="docs/roadmap.md">路线图</a></td><td align="center">当前已完成与尚未实现的候选事项</td></tr>
+<tr><td align="center"><a href="docs/open-source-baseline.md">开源基线</a></td><td align="center">参考项目、文档组织方法、发布检查</td></tr>
+<tr><td align="center"><a href="CHANGELOG.md">版本记录</a></td><td align="center">v01 首次开源与 Demo 开发历史</td></tr>
+</tbody>
+</table>
+</div>
 
 ## 开发与贡献
 

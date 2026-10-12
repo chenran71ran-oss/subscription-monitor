@@ -1,0 +1,20 @@
+name: 功能建议 / Feature
+description: 描述具体需要与使用场景，先检查路线图。
+title: '[Feature] '
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 需要解决的问题
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议行为与验收标准
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: 数据来源、权限与限制

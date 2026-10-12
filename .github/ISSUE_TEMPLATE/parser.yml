@@ -1,0 +1,38 @@
+name: 解析兼容 / Parser compatibility
+description: 提交最小脱敏资源，区分节点与流量解析。
+title: '[Parser] '
+body:
+  - type: markdown
+    attributes:
+      value: 用 example.invalid 替换服务器、虚构凭证替换 password/UUID/token。不要粘贴真实服务商 URL。
+  - type: input
+    id: version
+    attributes:
+      label: 版本与输入格式
+    validations:
+      required: true
+  - type: dropdown
+    id: layer
+    attributes:
+      label: 问题层次
+      options:
+        - 节点内容解析
+        - 流量或到期字段
+        - 远程请求失败
+        - 不确定
+    validations:
+      required: true
+  - type: textarea
+    id: fixture
+    attributes:
+      label: 最小脱敏正文与响应头
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 字段预期、实际结果与依据
+      description: 说明数字是总额、已用还是剩余；客户端数字不必然代表订阅元数据。
+    validations:
+      required: true
