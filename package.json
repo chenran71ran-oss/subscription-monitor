@@ -1,0 +1,24 @@
+{
+  "name": "subscription-monitor-panel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Self-hosted subscription quota and node TCP monitoring dashboard on Cloudflare Workers",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:check": "node scripts/build.mjs --check",
+    "test": "node tests/quota.cjs && node tests/api.cjs",
+    "test:ui": "npm run build:check && node tests/ui.cjs",
+    "check": "npm run build:check && node --check worker.js && node --check web/app.js && npm test && node scripts/check-docs.mjs",
+    "dev": "npm run build && wrangler dev",
+    "deploy": "npm run check && wrangler deploy"
+  },
+  "devDependencies": {
+    "playwright": "1.64.0",
+    "wrangler": "4.149.0"
+  }
+}

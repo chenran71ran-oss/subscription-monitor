@@ -1,0 +1,12 @@
+node_modules/
+.wrangler/
+.artifacts/
+wrangler.toml
+wrangler.json
+wrangler.jsonc
+.dev.vars*
+.env*
+!.dev.vars.example
+*.log
+subscription-status*.json
+private/

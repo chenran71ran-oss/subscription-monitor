@@ -1,0 +1,4 @@
+# Local development only. Copy to .dev.vars and replace this placeholder.
+ADMIN_TOKEN="replace-with-a-long-random-secret"
+# Optional legacy Windows ingestion credential. Use a separate value.
+# INGEST_TOKEN="replace-with-a-different-random-secret"

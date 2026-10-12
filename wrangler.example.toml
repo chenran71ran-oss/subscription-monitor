@@ -1,0 +1,16 @@
+name = "subscription-monitor"
+main = "worker.js"
+compatibility_date = "2026-10-11"
+workers_dev = true
+
+# Copy to wrangler.toml and replace the ID with your own KV namespace ID.
+[[kv_namespaces]]
+binding = "SUB_KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+
+# Example schedule. Cron runs in UTC; usage-day boundaries are Asia/Shanghai.
+# Remove this block if you only want manual checks.
+[triggers]
+crons = ["*/30 * * * *"]
+
+# ADMIN_TOKEN and optional INGEST_TOKEN must be secrets, never [vars].
